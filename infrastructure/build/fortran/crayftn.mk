@@ -32,9 +32,9 @@ FFLAGS_RISKY_OPTIMISATION = -O3 -hipa2
 #Cray has debug levels tied to optimisation levels
 ifeq ($(shell expr ${CRAYFTN_VERSION} \>= 015000000), 1)
   ifeq "$(PROFILE)" "full-debug"
-    FFLAGS_DEBUG    = -G0
+    FFLAGS_DEBUG    = 
   else ifeq "$(PROFILE)" "fast-debug"
-    FFLAGS_DEBUG    = -G2
+    FFLAGS_DEBUG    = 
   else ifeq "$(PROFILE)" "production"
     FFLAGS_DEBUG    =
   endif
