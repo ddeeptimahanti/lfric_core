@@ -87,7 +87,7 @@ MOD_DIR ?= mod
 #
 ifeq ($(shell uname),Linux)
   $(warning linux)
-  TIME_TOOL = /usr/bin/time -f "Compiled $<: Wallclock=%E, Highwater=%MKiB"
+  TIME_TOOL = time -f "Compiled $<: Wallclock=%E, Highwater=%MKiB"
 else
   $(warning not linux)
   TIME_TOOL = time
