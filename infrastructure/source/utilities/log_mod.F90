@@ -136,7 +136,7 @@ contains
 
     ! Check the number of ranks in the incomming communicator, as this
     ! determines whether logging goes to a file, or the terminal
-    call mpi_comm_size( communicator, total_ranks, ierror=status )
+    call mpi_comm_size( communicator, total_ranks, status )
     if (status /= 0) then
       write( error_unit, &
              "('Cannot determine communicator size. (',i0,')')" ) status
@@ -152,7 +152,7 @@ contains
                "('Cannot duplicate the communicator. (',i0,')')" ) status
         call abort_model()
       end if
-      call mpi_comm_rank( mpi_communicator, this_rank, ierror=status )
+      call mpi_comm_rank( mpi_communicator, this_rank, status )
       if (status /= 0) then
         write( error_unit, "('Cannot determine rank. iostat = ',i0)" ) status
         call abort_model()
@@ -235,7 +235,7 @@ contains
 #ifdef NO_MPI
       ! No barriers required in non-mpi build
 #else
-      call mpi_barrier( mpi_communicator, ierror=ios )
+      call mpi_barrier( mpi_communicator, ios )
       call mpi_comm_free( mpi_communicator, ios )
       if (ios /= 0) then
         write( error_unit, "('Cannot free the duplicate MPI comm. ierr = ', i0)" ) ios
