@@ -41,7 +41,7 @@ def setup_script_cray(build_config: BuildConfig,
 
     # The base flags
     # ==============
-    flags = ["-g", "-G0", "-m", "0",    # ?
+    flags = ["-g", "-m", "0",    # ?
              "-M", "E664,E7208,E7212",  # ?
              "-en",                     # Fortran standard
              "-ef",                     # use lowercase module names!Important!
@@ -78,7 +78,7 @@ def setup_script_cray(build_config: BuildConfig,
                    "-O0"],         # No optimisation
                   "full-debug")
     if ftn.get_version() >= (15, 0):
-        ftn.add_flags(["-G0"], "full-debug")
+        ftn.add_flags([""], "full-debug")
     else:
         ftn.add_flags(["-Gfast"], "full-debug")
 
@@ -86,7 +86,7 @@ def setup_script_cray(build_config: BuildConfig,
     # ==========
     ftn.add_flags(["-O2", "-hflex_mp=strict"], "fast-debug")
     if ftn.get_version() >= (15, 0):
-        ftn.add_flags(["-G2"], "fast-debug")
+        ftn.add_flags([""], "fast-debug")
     else:
         ftn.add_flags(["-Gfast"], "fast-debug")
 

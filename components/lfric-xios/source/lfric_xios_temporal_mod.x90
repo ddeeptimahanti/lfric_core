@@ -124,6 +124,9 @@ contains
     logical,                      intent(in)    :: cyclic
     integer(i_def),               intent(in)    :: update_freq
     integer(i_def),               intent(out)   :: record_offset
+    
+! implicit none is specified in the local scope so an explicit type must be specified for data object "fld" - from cce/20
+    class(field_parent_type), pointer    :: fld
 
     type(xios_date)       :: context_start
     integer(i_def)        :: i, j, n_fields
